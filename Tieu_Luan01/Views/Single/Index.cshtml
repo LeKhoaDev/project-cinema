@@ -1,0 +1,471 @@
+﻿@model Tieu_Luan01.Models.Common
+@{
+    ViewBag.Title = "Index";
+}
+@using Tieu_Luan01.Models
+
+<body>
+    <div class="block-wrapper">
+    <div class="lm">
+        <div class="container">
+            <div class="row">
+                <ol class="breadcrumb">
+                </ol>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="detail-feature">
+                        @foreach (PHIM i in Model.LstProduct)
+                        {
+                            <article>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-xs-8 col-xs-offset-2 col-md-offset-0">
+                                        <div class="detail-feat-img">
+                                            <img src="@i.hinhDD" class="loaded" data-was-processed="true" />
+                                        </div>
+                                    </div>
+                                    <div class="details col-md-8 col-sm-8 col-xs-12">
+                                        <h2 class="detail-title upper-text">@i.TENPHIM</h2>
+                                        <h2 class="detail-title vn upper-text"></h2>
+                                        <div class="detail-info">
+                                            <div class="detail-info-row">
+                                                <label>Nhà sản xuất:&nbsp;</label>
+                                                <div class="detail-info-right">
+                                                    <a href="#">@i.nhaSanXuat</a>
+                                                </div>
+                                            </div>
+                                            <div class="detail-info-row">
+                                                <label>Thể loại:&nbsp;</label>
+                                                <div class="detail-info-right">
+                                                    <a href="#">@i.theloai</a>
+                                                </div>
+                                            </div>
+                                            <div class="detail-info-row">
+                                                <label>Đạo diễn:&nbsp;</label>
+                                                <div class="detail-info-right">
+                                                    <a href="#">@i.daodien</a>
+                                                </div>
+                                            </div>
+                                            <div class="detail-info-row">
+                                                <label>Diễn viên:&nbsp;</label>
+                                                <div class="detail-info-right">
+                                                    <a href="#">@i.dienvien</a>
+                                                </div>
+                                            </div>
+                                            <div class="detail-info-row">
+                                                <label>Quốc gia:&nbsp;</label>
+                                                <div class="detail-info-right">
+                                                    <a href="#">@i.quocgia</a>
+                                                </div>
+                                            </div>
+                                            <div class="detail-info-row">
+                                                <label>Ngày khởi chiếu:&nbsp;</label>
+                                                <div class="detail-info-right">@i.ngaychieu</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row detail-description">
+                                    <div class="col-md-12 col sm-12 col-xs-12">
+                                        <div class="content-text">
+                                            <div id="info">
+                                                <h3>Nội dung phim</h3>
+                                                <div class="content-text-actors-info content-text">
+                                                    <br />
+                                                    <auto-folded folded-height="200" class="ng-isolate-scope">
+                                                        <div>
+                                                            <div class="shadow hidden"></div>
+                                                            <div class="auto-folded" ng-transclude style="display: block;">
+                                                                <p class="ng-scope">
+                                                                    <span style="font-size:14px;">
+                                                                        @i.ndTomTat
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                            <a href="" ng-click="toggleFoldedState()" class="auto-folded--more"></a>
+                                                        </div>
+                                                    </auto-folded>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                    <div ng-controller="movieDetailShowTime" class="ng-scope">
+                        <div ng-show="displayBundle">
+                            <div ng-init="id=&quot;338e66fc-562d-4f63-9ff3-8538bfd1c9f5&quot;;slug=&quot;con-nhot-mot-chong&quot;"></div>
+                            <h3>Lịch chiếu</h3>
+                            <div class="row showtime">
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <galaxy-select ng-model="citySelectConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                        <a class="btn btn-select login location">
+                                            <span class="btn-select-value ng-binding">Cả nước</span>
+                                            <span class="btn-select-arrow"></span>
+                                            <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="2jrxxa">
+                                                <option ng-if="!model.disablePlaceholder" ng-selected="model.placeholder[model.keyValue] == model.currentValue" ng-value="-1" class="ng-binding ng-scope" value="number:-1" selected="selected">
+                                                    Cả nước
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                    Cà Mau
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                    Bến Tre
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                    TP Hồ Chí Minh
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                    Hà Nội
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                    Đà Nẵng
+                                                </option>
+                                            </select>
+                                        </a>
+                                    </galaxy-select>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <galaxy-datepicker ng-model="currentDate" ng-on-change="onChangeDate" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                        <a class="btn btn-select login location datepicker">
+                                            <input type="text" id="galaxy-datepicker" name="" class="btn-select-input date" placeholder="Chọn ngày (dd/mm/yyyy)" readonly="readonly" fdprocessedid="dey0jo">
+                                            <span class="select-calendar">
+                                                <i class="icon-calendar">
+
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </galaxy-datepicker>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <galaxy-select ng-model="cinemaSelectConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                        <a class="btn btn-select login location">
+                                            <span class="btn-select-value ng-binding">Tất cả rạp</span>
+                                            <span class="btn-select-arrow"></span>
+                                            <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="8tcgjo">
+                                                <option ng-if="!model.disablePlaceholder" ng-selected="model.placeholder[model.keyValue] == model.currentValue" ng-value="-1" class="ng-binding ng-scope" value="number:-1" selected="selected">
+                                                    Tất cả rạp
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                    Galaxy Nguyễn Du
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                    Galaxy Tân Bình
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                    Galaxy Kinh Dương Vương
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                    Galaxy Quang Trung
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                    Galaxy Bến Tre
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                    Galaxy Mipec Long Biên
+                                                </option>
+                                                <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="6" class="ng-binding ng-scope" value="number:6">
+                                                    Galaxy Đà Nẵng
+                                                </option>
+                                            </select>
+                                        </a>
+                                    </galaxy-select>
+                                </div>
+                            </div>
+                            <div class="detail-booking-wrap">
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Nguyễn Du</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">12:30</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">16:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">18:45</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">20:00</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">22:15</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Tân Bình</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">14:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">16:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">20:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">22:30</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Kinh Dương Vương</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">13:30</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">14:45</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">16:00</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">18:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">20:15</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Quang Trung</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">16:20</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">18:30</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">20:45</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">23:00</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Bến Tre</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">14:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">16:20</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">20:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">22:30</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Mipec Long Biên</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">13:00</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">19:45</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">22:30</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div ng-repeat="cinema in cinemas | orderBy:'km'" ng-if="displayCinema(cinema)" class="detail-group-cinema ng-scope">
+                                    <div class="title-cinema">
+                                        <h5 class="ng-binding">Galaxy Đà Nẵng</h5>
+                                    </div>
+                                    <div class="item-cinema">
+                                        <div ng-repeat="bundles in cinema.dates" ng-if="bundles.showDate == currentDate" class="ng-scope">
+                                            <div ng-repeat="bundle in bundles.bundles" class="listtime ng-scope">
+                                                <label class="ng-binding">
+                                                    2D -&nbsp;
+                                                    Phụ đề
+                                                </label>
+                                                <div class="typetime">
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">13:30</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">15:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">18:00</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">20:15</a>
+                                                    </galaxy-buy-ticket>
+                                                    <galaxy-buy-ticket ng-repeat="session in bundle.sessions" ng-model="session" class="ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope ng-not-empty">
+                                                        <a class="showtimes-list ng-binding" ng-click="selectSession($event)">22:15</a>
+                                                    </galaxy-buy-ticket>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div id="getPromotion" ng-controller="registerEmailController" class="hidden-xs ng-scope">
+                        <h3>Nhận khuyến mãi</h3>
+                        <div class="box-promotion">
+                            <form ng-submit="submit()" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+                                <input placeholder="Email" type="email" ng-model="email" required="" class="login ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required" fdprocessedid="u7k34s">
+                                <button class="btn primary input" fdprocessedid="mc4ni">đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="movieSidebar" class="hidden-xs">
+                        <h3>Phim đang chiếu</h3>
+                        <div class="row movies-group">
+                            <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                <div class="article-movie-home">
+                                    <img src="/Images/d1.jpg" class="loading" data-was-processed="true" />
+                                    <a href="#">
+                                        <div class="decription-hover overlay">
+                                            <div class="movies-content">
+                                                <div class="group">
+                                                    <div class="btn secondary-white">mua vé</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                <div class="article-movie-home">
+                                    <img src="/Images/d2.jpg" class="loading" data-was-processed="true" />
+                                    <a href="#">
+                                        <div class="decription-hover overlay">
+                                            <div class="movies-content">
+                                                <div class="group">
+                                                    <div class="btn secondary-white">mua vé</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-13 col-sm-12 col-xs-12 movie-item">
+                                <div class="article-movie-home">
+                                    <img src="/Images/d3.jpg" class="loading" data-was-processed="true" />
+                                    <a href="#">
+                                        <div class="decription-hover overlay">
+                                            <div class="movies-content">
+                                                <div class="group">
+                                                    <div class="btn secondary-white">mua vé</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 pull-right">
+                                <a href="#" class="btn secondary fl-right">XEM THÊM</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 pull-right">
+                    <a href=@Url.Action("Index", "ThongBao") class="btn secondary fl-right">MUA VÉ</a>
+                </div>
+            </div>
+        </div>
+            </div>
+    </div>
+</body>
+
+

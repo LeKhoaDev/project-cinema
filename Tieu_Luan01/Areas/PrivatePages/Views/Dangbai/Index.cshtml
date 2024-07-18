@@ -1,0 +1,127 @@
+﻿@model Tieu_Luan01.Models.BaiViet
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Index", "DangBai", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row mb-2">
+            <!--left column-->
+            <div class="col-sm-8">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin chính</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên bài viết </label>
+                                @Html.TextBoxFor(m => m.tenBV, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Tên bài viết tối đa 35 ký tự" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nội dung tóm tắt </label>
+                                @Html.TextAreaFor(m => m.ndTomTat, new { @rows = "5", @class = "form-control", @placeholder = "Nội dung tóm tắt không quá 100 chữ" })
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group ">
+                                        <label for="exampleInputEmail1">Ngày đăng</label>
+                                        @Html.TextBoxFor(m => m.ngayDang, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Enter", @disabled = "@disabled" })
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group ">
+                                        <label for="exampleInputEmail1">Tài khoản</label>
+                                        @Html.TextBoxFor(m => m.taiKhoan, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Enter", @disabled = "@disabled" })
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group left">
+                                        <label for="exampleInputEmail1">Số lần đọc</label>
+                                        @Html.TextBoxFor(m => m.soLanDoc, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "123", @disabled = "@disabled" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!--right column-->
+            <div class="col-sm-4">
+                <!-- general form elements disabled -->
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Hình đại diện</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <img src="@ViewBag.ddHinh" alt="user-avatar" class="img-circle img-fluid">
+
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="HinhDaiDien">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.card-body -->
+            <div class="col-sm-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin chính</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            @Html.TextAreaFor(m => m.noiDung, new
+                       {
+                           @class = "textarea",
+                           @placeholder = "Place some text here",
+                                @id = "VungSoanThao",
+                           @style = "width:100%; height:600px; font-size: 14px; line-height:18px;" +
+                                "border:1px solid #dddddd; padding: 10px;"
+                       })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--submit-->
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Lưu thông tin</button>
+            </div>
+        </div>
+    }
+</div>
+<!--Script-->
+<script src="https://cdn.tiny.cloud/1/0vcfiemyhitxv3abmd73plsk3jj5aghp9uryee75jgy34rnv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#VungSoanThao',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+
+    });
+</script>
+<!--Script-->

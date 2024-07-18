@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopOnline_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="maBV" />
+    </Key>
+    <Property Name="maBV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenBV" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="hinhDD" Type="varchar(max)" />
+    <Property Name="ndTomTat" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ngayDang" Type="datetime" />
+    <Property Name="loaiTin" Type="nvarchar" MaxLength="30" />
+    <Property Name="noiDung" Type="nvarchar" MaxLength="4000" />
+    <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="daDuyet" Type="bit" />
+    <Property Name="soLanDoc" Type="int" />
+  </EntityType>
+  <EntityType Name="CHITIETPHIM">
+    <Key>
+      <PropertyRef Name="MAPHIM" />
+    </Key>
+    <Property Name="MAPHIM" Type="int" Nullable="false" />
+    <Property Name="TENPHIM" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="hinhDD" Type="varchar(max)" />
+    <Property Name="ndTomTat" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ngayDang" Type="datetime" />
+    <Property Name="maLoai" Type="int" Nullable="false" />
+    <Property Name="noiDung" Type="nvarchar" MaxLength="4000" />
+    <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="dvt" Type="nvarchar" MaxLength="32" />
+    <Property Name="daDuyet" Type="bit" />
+    <Property Name="nhaSanXuat" Type="nvarchar" MaxLength="500" />
+    <Property Name="daodien" Type="nvarchar" MaxLength="300" />
+    <Property Name="quocgia" Type="nvarchar" MaxLength="100" />
+    <Property Name="dienvien" Type="nvarchar" MaxLength="400" />
+    <Property Name="theloai" Type="nvarchar" MaxLength="200" />
+    <Property Name="ngaychieu" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="maKH" />
+    </Key>
+    <Property Name="maKH" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soDT" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="250" />
+    <Property Name="ngaySinh" Type="datetime" />
+    <Property Name="gioiTinh" Type="bit" />
+    <Property Name="ghiChu" Type="ntext" />
+  </EntityType>
+  <EntityType Name="LoaiPhim">
+    <Key>
+      <PropertyRef Name="maLoai" />
+    </Key>
+    <Property Name="maLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenLoai" Type="nvarchar" MaxLength="88" Nullable="false" />
+    <Property Name="ghiChu" Type="ntext" />
+  </EntityType>
+  <EntityType Name="MenuPhim">
+    <Key>
+      <PropertyRef Name="MAPHIM" />
+    </Key>
+    <Property Name="MAPHIM" Type="int" Nullable="false" />
+    <Property Name="TENPHIM" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="hinhDD" Type="varchar(max)" />
+    <Property Name="maLoai" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHIM">
+    <Key>
+      <PropertyRef Name="MAPHIM" />
+    </Key>
+    <Property Name="MAPHIM" Type="int" Nullable="false" />
+    <Property Name="TENPHIM" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="hinhDD" Type="varchar(max)" />
+    <Property Name="maLoai" Type="int" Nullable="false" />
+    <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="taiKhoan" />
+    </Key>
+    <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="matKhau" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="hoDem" Type="nvarchar" MaxLength="50" />
+    <Property Name="tenTV" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ngaysinh" Type="datetime" />
+    <Property Name="gioiTinh" Type="bit" />
+    <Property Name="soDT" Type="nvarchar" MaxLength="20" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="250" />
+    <Property Name="trangThai" Type="bit" />
+    <Property Name="ghiChu" Type="ntext" />
+  </EntityType>
+  <EntityType Name="VE">
+    <Key>
+      <PropertyRef Name="MAPHIM" />
+    </Key>
+    <Property Name="MAPHIM" Type="int" Nullable="false" />
+    <Property Name="TENPHIM" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DiaDiem" Type="nvarchar" MaxLength="200" />
+    <Property Name="hinhDD" Type="varchar(max)" />
+    <Property Name="ThoiGian" Type="nvarchar" MaxLength="100" />
+    <Property Name="maLoai" Type="int" Nullable="false" />
+    <Property Name="NGAYCHIEU" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK__BaiViet__taiKhoa__1B0907CE">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="taiKhoan" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="taiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETPH__maLoa__239E4DCF">
+    <End Role="LoaiPhim" Type="Self.LoaiPhim" Multiplicity="1" />
+    <End Role="CHITIETPHIM" Type="Self.CHITIETPHIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPhim">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="CHITIETPHIM">
+        <PropertyRef Name="maLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETPH__taiKh__25869641">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="CHITIETPHIM" Type="Self.CHITIETPHIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="taiKhoan" />
+      </Principal>
+      <Dependent Role="CHITIETPHIM">
+        <PropertyRef Name="taiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MenuPhim__maLoai__34C8D9D1">
+    <End Role="LoaiPhim" Type="Self.LoaiPhim" Multiplicity="1" />
+    <End Role="MenuPhim" Type="Self.MenuPhim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPhim">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="MenuPhim">
+        <PropertyRef Name="maLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIM__maLoai__300424B4">
+    <End Role="LoaiPhim" Type="Self.LoaiPhim" Multiplicity="1" />
+    <End Role="PHIM" Type="Self.PHIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPhim">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="PHIM">
+        <PropertyRef Name="maLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIM__taiKhoan__30F848ED">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="PHIM" Type="Self.PHIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="taiKhoan" />
+      </Principal>
+      <Dependent Role="PHIM">
+        <PropertyRef Name="taiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VE__maLoai__3A81B327">
+    <End Role="LoaiPhim" Type="Self.LoaiPhim" Multiplicity="1" />
+    <End Role="VE" Type="Self.VE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPhim">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="VE">
+        <PropertyRef Name="maLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopOnline_DataModelStoreContainer">
+    <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHITIETPHIM" EntityType="Self.CHITIETPHIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiPhim" EntityType="Self.LoaiPhim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuPhim" EntityType="Self.MenuPhim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIM" EntityType="Self.PHIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VE" EntityType="Self.VE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BaiViet__taiKhoa__1B0907CE" Association="Self.FK__BaiViet__taiKhoa__1B0907CE">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETPH__maLoa__239E4DCF" Association="Self.FK__CHITIETPH__maLoa__239E4DCF">
+      <End Role="LoaiPhim" EntitySet="LoaiPhim" />
+      <End Role="CHITIETPHIM" EntitySet="CHITIETPHIM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETPH__taiKh__25869641" Association="Self.FK__CHITIETPH__taiKh__25869641">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="CHITIETPHIM" EntitySet="CHITIETPHIM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MenuPhim__maLoai__34C8D9D1" Association="Self.FK__MenuPhim__maLoai__34C8D9D1">
+      <End Role="LoaiPhim" EntitySet="LoaiPhim" />
+      <End Role="MenuPhim" EntitySet="MenuPhim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIM__maLoai__300424B4" Association="Self.FK__PHIM__maLoai__300424B4">
+      <End Role="LoaiPhim" EntitySet="LoaiPhim" />
+      <End Role="PHIM" EntitySet="PHIM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIM__taiKhoan__30F848ED" Association="Self.FK__PHIM__taiKhoan__30F848ED">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="PHIM" EntitySet="PHIM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VE__maLoai__3A81B327" Association="Self.FK__VE__maLoai__3A81B327">
+      <End Role="LoaiPhim" EntitySet="LoaiPhim" />
+      <End Role="VE" EntitySet="VE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

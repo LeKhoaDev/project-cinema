@@ -1,0 +1,127 @@
+﻿@using Tieu_Luan01.Models
+@model Tieu_Luan01.Models.LoaiPhim
+@{
+    ViewBag.Title = "Index";
+    List<LoaiPhim> list = (List<LoaiPhim>)ViewData["DsLoai"];
+}
+<style>
+    form {
+        display: inline;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <!--left column-->
+        <div class="col-sm-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Chủng loại hàng Hóa - Ngành hàng</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 15%">
+                                    Mã loại
+                                </th>
+                                <th style="width: 35%">
+                                    Tên loại hàng
+                                </th>
+                                <th style="width: 20%">
+                                    Số sản phẩm
+                                </th>
+
+                                <th style="width: 40%" class="text-center">
+                                    Nhóm lệnh
+                                </th>
+                                <th style="width: 20%">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (LoaiPhim i in list)
+                            {
+                                <tr>
+                                    <td>
+                                        @i.maLoai
+                                    </td>
+                                    <td>
+                                        @i.tenLoai
+                                    </td>
+                                    <td>
+                                        @i.PHIMs.Where(x => x.maLoai == i.maLoai).Count() Sản phẩm
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        @using (Html.BeginForm("Delete", "LoaiHang", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="maLoai" value="@i.maLoai" />
+                                            <button class="btn btn-danger btn-sm" href="#">
+                                                <i>
+                                                </i>
+                                                Xóa
+                                            </button>
+                                        }
+                                        @using (Html.BeginForm("Update", "LoaiHang", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="ml" value="@i.maLoai" />
+                                            <button class="btn btn-primary btn-sm" href="#">
+                                                <i>
+                                                </i>
+                                                Chỉnh sửa
+                                            </button>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!--right column-->
+        <div class="col-sm-6">
+            <!-- general form elements disabled -->
+            @using (Html.BeginForm("Index", "LoaiHang", FormMethod.Post))
+            {
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin chính</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <form>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tên nhóm sản phẩm </label>
+
+                                @Html.TextBoxFor(m => m.tenLoai, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Tên loại hàng" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Diễn giải cho loại hàng </label>
+
+                                @Html.TextAreaFor(m => m.ghiChu, new { @rows = "10", @class = "form-control", @placeholder = "Ghi chú liên quan đến loại hàng" })
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Lưu thông tin</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /.card -->
+                    @Html.HiddenFor(x => x.maLoai)
+                </div>
+
+            }
+
+            <!-- /.card-body -->
+
+
+        </div>
+    </div>
+

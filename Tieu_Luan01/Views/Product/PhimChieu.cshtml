@@ -1,0 +1,109 @@
+﻿@model Tieu_Luan01.Models.Common
+@{
+    ViewBag.Title = "Index";
+}
+@using Tieu_Luan01.Models
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="tab-movies">
+                   <div class="tab-movie-line">
+                       <ul class="nav nav-tabs">
+                           <li class="active"><a href=@Url.Action("PhimChieu", "Product") data-toggle="tab"> PHIM ĐANG CHIẾU</a></li>
+                           <li><a href=@Url.Action("PhimSapChieu", "Product") data-toggle="tab">PHIM SẮP CHIẾU</a></li>
+                       </ul>
+                       <div class="tab-content">
+                           <div id="tab_onshow" class="tab-pane active">
+                               <div class="row watchmovie-group animated fadeInUp">
+                                   @foreach (PHIM i in Model.ListProduct) {
+                                   <div class="col-sm-3 col-md-3 col-xs-6 watchmovie-item">
+                                       <div class="article-watchmovie">
+                                           <img src="@i.hinhDD" />
+                                           <a href=@Url.Action("Index", "Single", new {Id = i.MAPHIM})>
+                                               <div class="decription-hover overlay">
+                                                   <div class="movies-content">
+                                                       <i class="icon-16"></i>
+                                                       <div class="group">
+                                                           <div class="btn secondary-white">Mua vé</div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </a>
+                                       </div>
+                                       <div class="title-watchmovie">
+                                           <h4 class="upper-text">@i.TENPHIM</h4>
+                                           <h4 class="vn upper-text"></h4>
+                                       </div>
+                                   </div>
+                                   }
+                               </div>
+                           </div>
+                           <div id="tab_oncoming" class="tab-pane">
+
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div id="content-seo">
+                    <h3>Galaxy Cinema</h3>
+                    <div class="row content-seo">
+                        <div class="col-md-12">
+                            <div class="content-text">
+                                <p style="margin:0in 0in 8pt">
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial,Helvetica,sans-serif;">
+                                            <span style="line-height:107%">
+                                                <span style="line-height:107%">
+                                                    <span id="cke_bm_668S" style="display: none;">&nbsp;</span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin:0cm 0cm 8pt; margin-right:0cm; margin-left:0cm">
+                                    <strong>
+                                        <span style="font-size:14px;">
+                                            <span style="font-family:Arial,Helvetica,sans-serif;">
+                                                <span id="cke_bm_782S" style="display: none;">&nbsp;</span>
+                                            </span>
+                                        </span>
+                                    </strong>
+                                </p>
+                                <p>
+                                    <span style="font-family:Arial,Helvetica,sans-serif">
+                                        <span style="font-size:14px">
+                                            &nbsp; Những ngày nghỉ của dịp lễ 30/4,1/5 cùng Giỗ Tổ Hùng Vương đã được ấn định. Bạn cảm thấy mệt mỏi vì những địa điểm du lịch đông đúc,
+                                            cảm thấy bức bối vì nghỉ dài ngày nhưng cũng không có chỗ nào để đi, vậy thì hãy chạy ngay ra
+                                            <strong>Galaxy Cinema</strong>  để thưởng thức những bộ
+                                            <a href="#">Phim chiếu rạp</a> vô cùng đặc sắc với nhiều thể loại cho mọi người và mọi lứa tuổi.
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin: 0cm 0cm 8pt;">
+                                    <a href="#">
+                                        <strong>
+                                            <span style="font-family:Arial,Helvetica,sans-serif">
+                                                <span style="font-size:14px">
+                                                    1. &nbsp; Dungeons & Dragons: Honor Among Thieves / Ngục Tối Và Rồng: Danh Dự Của Kẻ Trộm (21.04)
+                                                </span>
+                                            </span>
+                                        </strong>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<link href="~/Content/vung02.css" rel="stylesheet" type="text/css" media="all" />

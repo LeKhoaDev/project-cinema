@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c86789c8981431a92bd80901f15fb3b" Name="Diagram1">
+        <EntityTypeShape EntityType="PhimOnlineModel.BaiViet" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhimOnlineModel.KhachHang" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhimOnlineModel.LoaiPhim" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhimOnlineModel.MenuPhim" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhimOnlineModel.PHIM" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhimOnlineModel.TaiKhoan" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhimOnlineModel.VE" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="PhimOnlineModel.FK__BaiViet__taiKhoa__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="PhimOnlineModel.FK__MenuPhim__maLoai__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="PhimOnlineModel.FK__PHIM__maLoai__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="PhimOnlineModel.FK__VE__maLoai__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="PhimOnlineModel.FK__PHIM__taiKhoan__25869641" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

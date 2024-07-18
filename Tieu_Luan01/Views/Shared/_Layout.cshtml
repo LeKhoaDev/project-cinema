@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!--theme-style-->
+    <link href="~/Content/style1.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/style2.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!--//theme-style-->
+    <!--Script-->
+    <script src="http://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!---------->
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <!--top-Header-left-->
+    <div class="navbar navbar-inverse navbar-fixed-top row">
+        <div class="container header-nav-wrapper">
+            <div class="navbar-header col-md-4 col-sm-4 col-xs-4">
+                <div class="logo">
+                    <nav class="navbar navbar-light bg-light ">
+                        <a href="@Url.Action("Index", "Home")"><img src="~/Images/logo.png" /></a>
+                        @*<a class="navbar-brand">Navbar</a>*@
+                    </nav>
+                    
+                </div>
+            </div>
+            <!--Search-middle-->
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="primary-nav-wrapper desktop hidden-xs hidden-sm">
+                    <div class="search">
+                        <galaxy-search-bar class="ng-isolate-scope">
+                            <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                                <div class="input-append">
+                                    <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-valid ng-empty ng-touched" type="text" autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: &quot;default blur&quot;, debounce: { default: 500, blur: 0 } }" ,="" ng-change="search(searchKey)" fdprocessedid="ma488p">
+                                    <button type="submit" class="search-btn fas fa-search" fdprocessedid="iv0n08">
+                                        <i class="icon-search ">
+                                        </i>
+                                    </button>
+                                </div>
+                            </form>
+                        </galaxy-search-bar>
+                    </div>
+                    <div class="secondary-nav-wrapper">
+                        <ul class="secondary-nav">
+                            <li>
+                                <a id="loginLink" rel="external" href=@Url.Action("Index", "Login") ng-show="!userInfo.memberId" ng-click="openLogin()">
+                                    <i class="icon-user glyphicon glyphicon-user"></i>Đăng nhập
+                                </a>
+                            </li>
+                            <li class="language hidden-xs">
+                                <a rel="external" href="/gop-y" class="active">VN</a>\
+                                <span>|</span>
+                                <a rel="external" href="/en/gop-y">EN</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="navbar-collapse collapse col-md-4 tx box_1">
+                <form class="form-group ">
+                    <input type="search" placeholder="Tìm tên phim" aria-label="Search" class="mn">
+                    <a href="#">
+                        <i class="fas fa-search ts"></i>
+                    </a>
+                </form>
+            </div>-->
+            <!---------------------------------------->
+            <!--Top-Header-right-->
+            <!--<div class="secondary-nav-wrapper">
+                <div class="secondary-nav">
+                    <div class="navbar-collapse navbar-right collapse col-md-3">
+                        <ul class="nav navbar-nav navbar-right ">
+                            <li><a href="@Url.Action("Index", "Login")"><span class="glyphicon glyphicon-user">Login</span><i class="icon-user"></i></a></li>
+                            <li><a href="@Url.Action("Index", "Register")">Register <span class="glyphicon glyphicon-user"></span><i class="icon-user"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+            <!---------------------------------------->
+        </div>
+        <div @*ng-controller="navbarController"*@ class="galaxy-nav ng-scope ">
+            <div class="container">
+                <!--<div class="search hidden-lg hidden-md">-->
+                    @*<galaxy-search-bar class="ng-isolate-scope">
+                        <form class="search-form ng-pristine ng-valid" ng-submit="submit()">
+                            <div class="input-append">
+                                <input placeholder="Tìm tên phim, diễn viên..." class="search-box ng-pristine ng-untouched ng-valid ng-empty" type="text"
+                                       autocomplete="off" ng-model="searchKey" ng-model-options="{ updateOn: " default blur", debounce: { default: 500, blur: 0 } }" ,
+                                       ng-change="search(searchKey)" />
+                                <button type="submit" class="search-btn">
+                                    <i class="icon-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </galaxy-search-bar>*@
+                <!--</div>-->
+                <nav>
+                    <ul class="primary-nav">
+                        <li>
+                        <a rel="external" href=@Url.Action("VeTheoPhim", "Product")>Mua vé</a>
+                        </li>
+                        <li class="sub-nav dropdown">
+                            <a rel="external" href="@Url.Action("PhimChieu", "Product")" class="dropdown-toggle" data-toggle="dropdown">Phim</a>
+                                <div id="sub-menu">
+                                    <ul class="undefined dropdown-menu">
+                                        <li><a rel="external" href="#">Phim đang chiếu</a></li>
+                                        <li><a rel="external" href="#">Phim sắp chiếu</a></li>
+                                    </ul>
+                                </div>
+                        </li>
+                        <li class="sub-nav dropdown">
+                            <a ref="external" href="#" class="dropdown-toggle">Góc điện ảnh</a>
+                            <div id="sub-menu">
+                                <ul class="undefined dropdown-menu">
+                                    <li><a ref="external" href="#">Thể loại phim</a></li>
+                                    <li><a ref="external" href="#">Diễn viên</a></li>
+                                    <li><a ref="external" href="#">Đạo diễn</a></li>
+                                    <li><a ref="external" href="#">Bình luận phim</a></li>
+                                    <li><a ref="external" href="#">Blog điện ảnh</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sub-nav dropdown">
+                            <a ref="external" href="#" class="dropdown-toggle">Sự kiện</a>
+                            <div id="sub-menu">
+                                <ul class="undefined dropdown-menu">
+                                    <li><a ref="external" href="#">Ưu đãi</a></li>
+                                    <li><a ref="external" href="#">Phim hay tháng</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a ref="external" href=@Url.Action("VeTheoPhim", "Product")>Rạp/Giá Vé</a></li>
+                        <li><a ref="external" href=@Url.Action("Support", "Support")>Hỗ trợ</a></li>
+                        <li><a ref="external" href=@Url.Action("Member", "Member")>Thành viên</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!---------------------------------------------------------->
+    
+    <!---------------------------------------------------------->
+    <!------------------------->
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <nav class="navbar navbar-light bg-light">
+                            <form class="form-inline">
+                            </form>
+                        </nav>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+    <div class=" body-content">
+        @RenderBody()
+
+
+    </div>
+    <!------------------------------------------------------------------------------------->
+    <!--------------FOOTER---------------->
+    <div class="footer-content">
+        <div class="footer-bg">
+            <div class="container">
+                <div class="row">
+                    <div style="z-index:2" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Giới thiệu</h1>
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Về chúng tôi</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Thỏa thuận sử dụng</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Quy chế hoạt động</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Chính sách bảo mật</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="z-index:2" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Góc điện ảnh</h1>
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Thể loại phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Bình luận phim</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Blog điện ảnh</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Phim hay tháng</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="z-index:2" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_nav_menu">
+                                <h1 class="title-widget">Hỗ trợ</h1>
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Góp ý</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Sale & Services </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Rạp / Giá vé</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Tuyển dụng</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="z-index:2" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <ul class="list-unstyled clear-margins">
+                            <li class="widget-container widget_recent_news">
+                                <h1 class="title-widget">Kết nối Galaxy cinema</h1>
+                                <div class="social-icons ">
+                                    <ul class="nomargin">
+                                        <a href="#" target="_blank">
+                                            <i id="social" class="fab fa-facebook-f social-fb sm"></i>
+                                        </a>
+                                        <a href="#" target="_blank">
+                                            <i id="social" class="fab fa-youtube social-youtube sm"></i>
+                                        </a>
+                                        <a href="#" target="_blank">
+                                            <i id="social" class="fab fa-instagram social-inst sm"></i>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </li>
+                          </ul>
+                        <div class="store">
+                            <ul class="list-unstyled clear-margins">
+                                <li class="widget-container widget_recent_news">
+                                    <h1 class="title-widget">Download app</h1>
+                                    <div class="social-icons">
+                                        <ul class="nomargin">
+                                            <a href="#">
+                                                <i id="social" class="fab fa-apple social-store sm"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i id="social" class="fab fa-google-play social-store sm"></i>
+                                            </a>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

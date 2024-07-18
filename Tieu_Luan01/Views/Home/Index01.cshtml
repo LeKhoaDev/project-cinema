@@ -1,0 +1,1233 @@
+﻿@model Tieu_Luan01.Models.Common
+@{
+    ViewBag.Title = "Index01";
+}
+@using Tieu_Luan01.Models
+<!DOCTYPE html>
+<html lang="en">
+@*<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>*@
+<body>
+    <div id="vung02" class="container-fluid">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+                <li data-target="#myCarousel" data-slide-to="6"></li>
+            </ul>
+            <!-- Wrapper for slides -->
+            <div class="lm">
+            <div class="carousel-inner">
+                <div class="item active ">
+                    <img src="/Images/v1.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img src="/Images/v2.jpg" alt="Chicago">
+                </div>
+                <div class="item">
+                    <img src="~/Images/v3.jpg" alt="laliga">
+                </div>
+                <div class="item">
+                    <img src="~/Images/v4.jpg" alt="worldcup">
+                </div>
+                <div class="item">
+                    <img src="~/Images/v5.jpg" alt="Chicago">
+                </div>
+                <div class="item">
+                    <img src="~/Images/v6.jpg" alt="Chicago">
+                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <div class="container">
+                    <div class="box-buy-ticket animated zoomIn">
+                        <div ng-controller="quickBuyTicket" class="tabs ng-scope">
+                            <div class="label-tab hidden-sm hidden-xs">Mua vé nhanh</div>
+                            <h3 class="hidden-lg hidden-md">Mua vé nhanh</h3>
+                            <input id="tab-1" type="radio" name="radio-set" checked="checked" ng-click="clickTabNavTicket(" byMovie")" class="tab-selector-1" />
+                            <label for="tab-1" class="tab-label-1">Theo phim</label>
+                            <input id="tab-2" type="radio" name="radio-set" checked="checked" ng-click="clickTabNavTicket(" byDate")" class="tab-selector-2" />
+                            <label for="tab-2" class="tab-label-1">Theo ngày</label>
+                            <input id="tab-3" type="radio" name="radio-set" checked="checked" ng-click="clickTabNavTicket(" byCinema")" class="tab-selector-3" />
+                            <label for="tab-3" class="tab-label-1">Theo rạp</label>
+                            <div class="clear-shadow"></div>
+                            <div id="id-block-ticket" ng-hide="isMobile == true && flagShowBlockTicket == false" class="content">
+                                <div class="content-1">
+                                    <form class="ng-pristine ng-valid">
+                                        <galaxy-select ng-model="byMovie" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="2nej69h">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Con Nhót Mót Chồng
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Lật Mặt 6: Tấm Vé Định Mệnh
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Fireheart
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Tid Noy
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Guardians Of The Galaxy Vol.3
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Inhuman Kiss 2
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="cinemaConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="t2gox">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Galaxy Nguyễn Du
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Galaxy Tân Bình
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Galaxy Kinh Dương Vương
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Galaxy Quang Trung
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Galaxy Bến Tre
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Galaxy Mipec Long Biên
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="dateConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="p3hna">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Thứ năm, 04/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Thứ sáu, 05/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Thứ bảy, 06/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Chủ nhật, 07/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Thứ ba, 09/05/2023
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="6dq69q">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0" selected="selected">
+                                                        18:00, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        18:45, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        20:15, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        22:30, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        23:15, 2D - Phụ đề
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                    </form>
+                                </div>
+                                <div class="content-2">
+                                    <form class="ng-pristine ng-valid">
+                                        <galaxy-select ng-model="byDate" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="z1hs2b">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Thứ năm, 04/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Thứ sáu, 05/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Thứ bảy, 06/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Chủ nhật, 07/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Thứ ba, 09/05/2023
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="cinemaConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="4hlpdl">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Galaxy Nguyễn Du
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Galaxy Tân Bình
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Galaxy Kinh Dương Vương
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Galaxy Quang Trung
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Galaxy Bến Tre
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Galaxy Mipec Long Biên
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="movieConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="brpfnu">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Con Nhót Mót Chồng
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Lật Mặt 6: Tấm Vé Định Mệnh
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Fireheart
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Tid Noy
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Guardians Of The Galaxy Vol.3
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Inhuman Kiss 2
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="2szzgf">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0" selected="selected">
+                                                        18:00, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        18:45, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        20:15, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        22:30, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        23:15, 2D - Phụ đề
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                    </form>
+                                </div>
+                                <div class="content-3">
+                                    <form class="ng-pristine ng-valid">
+                                        <galaxy-select ng-model="byCinema" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="g9ipku">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Galaxy Nguyễn Du
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Galaxy Tân Bình
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Galaxy Kinh Dương Vương
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Galaxy Quang Trung
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Galaxy Bến Tre
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Galaxy Mipec Long Biên
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="movieConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="sfsite">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Con Nhót Mót Chồng
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Lật Mặt 6: Tấm Vé Định Mệnh
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Fireheart
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Tid Noy
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Guardians Of The Galaxy Vol.3
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Inhuman Kiss 2
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="dateConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="jw9o4l">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Thứ năm, 04/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Thứ sáu, 05/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Thứ bảy, 06/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Chủ nhật, 07/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Thứ ba, 09/05/2023
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="g6jm1q">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0" selected="selected">
+                                                        18:00, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        18:45, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        20:15, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        22:30, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        23:15, 2D - Phụ đề
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                    </form>
+                                </div>
+                            </div>
+                            <a id="loginBuyticket" ng-if="isMobile == false" ng-click="buyTicket()" class="btn primary fl-right btn-buyticket-box ng-scope">Mua vé</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------------------------------------------------------->
+    <div class="container">
+        <div id="vung03" class="navbar-collapse navbar-left collapse">
+            <ul class="nav navbar-nav navbar-left tab-movie-line nav-tabs">
+                <li><a href=@Url.Action("Index", "Home") data-toggle="tab"> PHIM ĐANG CHIẾU</a></li>
+                <li class="active"><a href=@Url.Action("Index01", "Home") data-toggle="tab">PHIM SẮP CHIẾU</a></li>
+            </ul>
+        </div>
+        <div class="">
+
+        </div>
+        <!----------------------------------------------------------------------------------->
+        <div class="tab-content">
+            <div id="=tab_default_1" class="tab-pane active">
+                <div class="row movies-group fadeInUp">
+                    @foreach (MenuPhim i in Model.Menu)
+                    {
+                    <div class="col-md-4 col-sm-4 col-xs-4 movie-item">
+                        <div class="article-movie-home">
+                            <img src="@i.hinhDD" alt="">
+                            <a href=@Url.Action("Index", "Single",new {Id = i.MAPHIM})>
+                                <div class="decription-hover overlay">
+                                    <div class="movies-content">
+                                        @*<i class="icon-c16"></i>*@
+                                        <div class="group">
+                                            <div class="btn secondary-white">
+                                                mua vé
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="title-movie">
+                            <h4 class="upper-text">@i.TENPHIM</h4>
+                            <h4 class="vn upper-text"></h4>
+                        </div>
+                    </div>
+                    }
+                    <!--<div class="col-md-4 col-sm-4 col-xs-4 movie-item">
+                        <div class="article-movie-home">
+                            <a href="#"><img src="/Images/d13.jpg" alt=""></a>
+                            <a href="#">
+                                <div class="decription-hover overlay">
+                                    <div class="movies-content">-->
+                                        @*<i class="icon-c16"></i>*@
+                                        <!--<div class="group">
+                                            <div class="btn secondary-white">
+                                                mua vé
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="title-movie">
+                            <h4 class="upper-text">Doraemon: Nobita’s Sky Utopia 2023</h4>
+                            <h4 class="vn upper-text"></h4>
+                        </div>
+                    </div>-->
+                    <!--<div class="col-md-4 col-sm-4 col-xs-4 movie-item">
+                        <div class="article-movie-home">
+                            <a href="#"><img src="/Images/d14.jpg" alt=""></a>
+                            <a href="#">
+                                <div class="decription-hover overlay">
+                                    <div class="movies-content">-->
+                                        @*<i class="icon-c16"></i>*@
+                                        <!--<div class="group">
+                                            <div class="btn secondary-white">
+                                                mua vé
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="title-movie">
+                            <h4 class="upper-text">The Little Mermaid</h4>
+                            <h4 class="vn upper-text"></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 movie-item">
+                        <div class="article-movie-home">
+                            <a href="#"><img src="/Images/d15.jpg" alt=""></a>
+                            <a href="#">
+                                <div class="decription-hover overlay">
+                                    <div class="movies-content">-->
+                                        @*<i class="icon-c16"></i>*@
+                                        <!--<div class="group">
+                                            <div class="btn secondary-white">
+                                                mua vé
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="title-movie">
+                            <h4 class="upper-text">The Creeping</h4>
+                            <h4 class="vn upper-text"></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 movie-item">
+                        <div class="article-movie-home">
+                            <a href="#"><img src="/Images/d16.jpg" alt=""></a>
+                            <a href="#">
+                                <div class="decription-hover overlay">
+                                    <div class="movies-content">-->
+                                        @*<i class="icon-c16"></i>*@
+                                        <!--<div class="group">
+                                            <div class="btn secondary-white">
+                                                mua vé
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="title-movie">
+                            <h4 class="upper-text">Spider-Man: Across The Spider-Verse</h4>
+                            <h4 class="vn upper-text"></h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 movie-item">
+                        <div class="article-movie-home">
+                            <a href="#"><img src="/Images/d17.jpg" alt=""></a>
+                            <a href="#">
+                                <div class="decription-hover overlay">
+                                    <div class="movies-content">-->
+                                        @*<i class="icon-c16"></i>*@
+                                        <!--<div class="group">
+                                            <div class="btn secondary-white">
+                                                mua vé
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="title-movie">
+                            <h4 class="upper-text">Transformers: Rise Of The Beasts</h4>
+                            <h4 class="vn upper-text"></h4>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 pull-right">
+                        <a href=@Url.Action("PhimSapChieu", "Product") class="btn secondary fl-right">XEM THÊM</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container article-blog-like">
+        <div id="comment-blog">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <a href="#" class="title-block">
+                        <h3>Bình Luận phim</h3>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p1.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Preview] Guardians Of The Galaxy Vol.3 Lấy Lại Niềm Tin Dành Cho Dòng Phim Siêu Anh Hùng</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">234</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.6</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(81)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                Dù đã đến gần ngày công chiếu, đa số thông tin về nội dung phim vẫn chỉ gói gọn trong hai chữ “tin đồn”.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p2.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Review] Lật Mặt 6: Khẳng Định Giá Trị Thương Hiệu Trăm Tỷ</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                <b><i>Lật Mặt 6: Tấm Vé Định Mệnh.</i></b> đã ra mắt tại phòng vé và tiếp tục tạo cơn địa chấn đáng chú ý vào dịp Lễ.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p3.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Review] Con Nhót Mót Chồng: Tình Cha Con Cảm Động Và Màn Tái Xuất Ấn Tượng Của Thái Hòa</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                Một người cha bợm nhậu, một đứa con “lỡ thì”, một xóm lao động hơi “náo nhiệt”…, gần như tất cả những điều có vẻ bất ổn đó đã tạo nên
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p4.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Preview] [Review] Dungeons & Dragons: Chuyển Thể Xuất Sắc Từ Game Kinh Điển!</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                Chuyển thể phim chiếu rạp từ game nào đâu dễ dàng, nhất là khi nhà sản xuất “chơi lớn” chọn làm live action chứ chẳng phải hoạt hình.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <a href="#" class="title-block">
+                        <h3>Blog Điện Ảnh</h3>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p1.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Preview] Guardians Of The Galaxy Vol.3 Lấy Lại Niềm Tin Dành Cho Dòng Phim Siêu Anh Hùng</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                Dù đã đến gần ngày công chiếu, đa số thông tin về nội dung phim vẫn chỉ gói gọn trong hai chữ “tin đồn”.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p2.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Review] Lật Mặt 6: Khẳng Định Giá Trị Thương Hiệu Trăm Tỷ</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                <b><i>Lật Mặt 6: Tấm Vé Định Mệnh.</i></b> đã ra mắt tại phòng vé và tiếp tục tạo cơn địa chấn đáng chú ý vào dịp Lễ.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p3.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Review] Con Nhót Mót Chồng: Tình Cha Con Cảm Động Và Màn Tái Xuất Ấn Tượng Của Thái Hòa</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                Một người cha bợm nhậu, một đứa con “lỡ thì”, một xóm lao động hơi “náo nhiệt”…, gần như tất cả những điều có vẻ bất ổn đó đã tạo nên
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blog">
+                            <div class="movie-thumb">
+                                <a href="#" class="has-overlay"><img src="/Images/p4.jpg" alt="" /></a>
+                            </div>
+                            <h5>
+                                <a href="#">[Preview] [Review] Dungeons & Dragons: Chuyển Thể Xuất Sắc Từ Game Kinh Điển!</a>
+                            </h5>
+                            <ul>
+                                <li style="margin-right: 10px;">
+                                    <span>
+                                        <div class="view-wrap">
+                                            <i class="icon-view"></i>
+                                            <span class="ng-binding">1666</span>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="rating-movie rating-home">
+                                        <span class="rating-value">
+                                            <strong class="review-home ng-binding">9.1</strong>
+                                            <span>10</span>
+                                            <span class="ng-binding">&nbsp;(714)</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="blog-content hidden-xs">
+                                <p>
+                                    <span style="font-size:14px;">
+                                        <span style="font-family:Arial, Arial, Helvetica, sans-serif;">
+                                            <span style="line-height:107%;">
+                                                Chuyển thể phim chiếu rạp từ game nào đâu dễ dàng, nhất là khi nhà sản xuất “chơi lớn” chọn làm live action chứ chẳng phải hoạt hình.
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div id="promotion">
+                    <a href="#" class="title-block">
+                        <h3>
+                            Tin Khuyến Mãi
+                        </h3>
+                    </a>
+                    <div class="row promotion">
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a1.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>U22 Vui Vẻ - Bắp Nước Siêu Hạt Dẻ</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:14px;">
+                                                        <span style="line-height:107%;">
+                                                            <strong>Galaxy Cinema</strong>
+                                                            ra mắt combo ưu tiên dành cho U22!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a2.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>VNPAY Giảm Ngay 15K!</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:11px;">
+                                                        <span style="line-height:115%;">
+                                                            Hưởng ưu đãi ngập tràn mà còn được
+                                                            <b>giảm giá khi thanh toán qua VNPAY-QR!</b>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a3.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>Ngày Tri Ân Của Galaxy Cinema - Ngày Thứ Hai ĐẦU TIÊN Mỗi Tháng</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:11px;">
+                                                        <span style="line-height:115%;">
+                                                            Từ lâu, chương trình Ngày Tri Ân Nhằm tạo điều kiện thuận lợi hơn cho các khách hàng thả ga xem phim đã trở nên quen thuộc với các khách hàng thân yêu của Galaxy Cinema.
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a4.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>Happy Day</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:14px;">
+                                                        <span style="line-height:107%;">
+                                                            <strong>thứ 3 hàng tuần</strong>
+                                                            – Happy Day, ưu đãi giá vé
+                                                            <strong>CHỈ TỪ 50K</strong>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a5.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>Milo Siêu Khủng Giá Chỉ 19K!</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:14px;">
+                                                        <span style="line-height:107%;">
+                                                            Ngày ngọt ngào –
+                                                            <b>Milo Day</b>
+                                                            mà
+                                                            <b>Galaxy Cinema</b>
+                                                            dành tặng các Stars sẽ trở lại vào tháng 4&nbsp; này!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a6.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>Chào 2023, Đón Mưa Quà Tặng Thành Viên Từ Galaxy Cinema!</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:14px;">
+                                                        <span style="line-height:107%;">
+                                                            Chỉ cần là thành viên
+                                                            <b>Galaxy Cinema</b>
+                                                            , nhận ngay 1 bắp 2 nước!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 promotion-item">
+                            <div class="promotion-item-home">
+                                <a href="#"><img src="/Images/a7.jpg" alt="" /></a>
+                                <div class="decription-hover overlay hidden-xs">
+                                    <a href="#">
+                                        <div class="info">
+                                            <h2>Galaxy Trung Chánh Dành Tặng Suất Chiếu Đặc Biệt Đến Các Bé Trường Chuyên Biệt Ánh Dương</h2>
+                                            <p></p>
+                                            <p>
+                                                <span style="font-family:arial, Arial, Helvetica, sans-serif">
+                                                    <span style="font-size:14px;">
+                                                        <span style="line-height:107%;">
+                                                            <strong>Galaxy Trung Chánh</strong>
+                                                            và
+                                                            <strong>Trung Tâm Văn Hóa Quận 12</strong>
+                                                            cùng tổ chức tặng các bé
+                                                            <strong>Trường Chuyên biệt Ánh Dương</strong>
+                                                            buổi xem phim miễn phí!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <div class="group">
+                                        <a href="#"></a>
+                                        <a href="#" class="btn secondary-white">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 ">
+                <div id="content-seo">
+                    <h3>Galaxy Cinema</h3>
+                    <div class="row content-seo">
+                        <div class="col-md-12">
+                            <div class="content-text">
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            <a href="#"><b>Galaxy Cinema</b></a>
+                                            &nbsp; là một trong những công ty tư nhân đầu tiên về điện ảnh được thành lập từ năm 2003, đã khẳng định thương hiệu là 1 trong 10 địa điểm vui chơi giải trí được yêu thích nhất.
+                                            Ngoài hệ thống rạp chiếu phim hiện đại, thu hút hàng triệu lượt người đến xem,
+                                            <a href="#"><b>Galaxy Cinema</b></a>
+                                            còn hấp dẫn khán giả bởi không khí thân thiện cũng như chất lượng dịch vụ hàng đầu.
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Đến website
+                                            <a href="#"><i>galaxycine.vn</i></a>
+                                            , khách hàng&nbsp; sẽ dễ dàng tham khảo các
+                                            <a href="#"><i>phim hay nhất</i></a>
+                                            &nbsp;
+                                            <a href="#"><i>phim mới nhất</i></a>
+                                            đang chiếu hoặc sắp chiếu luôn được cập nhật thường xuyên.
+                                            <a href="#"><i>Lịch chiếu</i></a>
+                                            tại tất cả hệ thống
+                                            <a href="#"><i>rạp chiếu phim</i></a>
+                                            của
+                                            <a href="#"><i>Galaxy Cinema</i></a>
+                                            cũng được cập nhật đầy đủ hàng ngày hàng giờ trên
+                                            <i>Trang chủ</i>
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Từ vũ trụ điện ảnh Marvel, người hâm mộ sẽ có cuộc tái ngộ với Người Nhện qua
+                                            <em>Spider-Man: No Way Home</em>
+                                            hoặc
+                                            <em>Doctor Strange 2</em>
+                                            . Ngoài ra
+                                            <em>007: No Time To Die, Turning Red, Minions: The Rise Of Gru</em>
+                                            ..., là những tác phẩm hứa hẹn sẽ gây bùng nổ phòng vé trong thời gian tới.
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Giờ đây đặt vé tại
+                                            <b><a href="#"><b>Galaxy Cinema</b></a>&nbsp;</b>
+                                            càng thêm dễ dàng chỉ với vài thao tác vô cùng đơn giản. Để mua vé, hãy vào tab Mua vé. Quý khách có thể chọn Mua vé theo phim, theo rạp, hoặc theo ngày. Sau đó, tiến hành mua vé theo các bước hướng dẫn.
+                                            Chỉ trong vài phút, quý khách sẽ nhận được tin nhắn và email phản hồi
+                                            <i>Đặt vé thành công</i>
+                                            của
+                                            <a href="#"><b>Galaxy Cinema</b></a>
+                                            . Quý khách có thể dùng tin nhắn lấy vé tại quầy vé của
+                                            <a href="#"><b>Galaxy Cinema</b></a>
+                                            hoặc quét mã QR để một bước vào rạp mà không cần tốn thêm bất kỳ công đoạn nào nữa.
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Nếu bạn đã chọn được
+                                            <a href="#"><i>phim hay</i></a>
+                                            để xem, hãy đặt vé cực nhanh bằng box
+                                            <i>Mua Vé Nhanh</i>
+                                            ngay từ
+                                            <a href="#"><i>Trang Chủ</i></a>
+                                            . Chỉ cần một phút, tin nhắn và email phản hồi của
+                                            <b><a href="#"></a>Galaxy Cinema</b>
+                                            sẽ gửi ngay vào điện thoại và hộp mail của bạn.
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Nếu chưa quyết định sẽ xem
+                                            <i>phim mới</i>
+                                            nào, hãy tham khảo các bộ
+                                            <a href="#"><i>phim hay</i></a>
+                                            trong mục
+                                            <a href="#"><i>Phim Đang Chiếu</i></a>
+                                            cũng như
+                                            <a href="#"><i>Phim Sắp Chiếu</i></a>
+                                            tại
+                                            <a href="#"><i>rạp chiếu phim</i></a>
+                                            bằng cách vào mục
+                                            <a href="#"><i>Bình Luận Phim</i></a>
+                                            ở
+                                            <i><a href="#">Góc Điện Ảnh</a></i>
+                                            để đọc những bài bình luận chân thật nhất, tham khảo và cân nhắc. Sau đó, chỉ việc đặt vé bằng box
+                                            <i>Mua Vé Nhanh</i>
+                                            ngay ở đầu trang để chọn được suất chiếu và chỗ ngồi vừa ý nhất.  &nbsp;
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            <a href="#"><b>Galaxy Cinema</b></a>
+                                            luôn có những chương trình
+                                            <a href="#"><i>khuyến mãi</i>, <i>ưu đãi</i></a>
+                                            , quà tặng vô cùng hấp dẫn như
+                                            <i>giảm giá</i>
+                                            vé, tặng vé xem phim miễn phí, tặng Combo, tặng quà phim…  dành cho các khách hàng.
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Trang web
+                                            <i>galaxycine.vn</i>
+                                            còn có mục
+                                            <i>Góc Điện Ảnh</i>
+                                            - nơi lưu trữ dữ liệu về phim, diễn viên và đạo diễn, những bài viết chuyên sâu về điện ảnh, hỗ trợ người yêu phim dễ dàng
+                                            hơn trong việc lựa chọn phim và bổ sung thêm kiến thức về điện ảnh cho bản thân. Ngoài ra, vào mỗi tháng,
+                                            <a href="#"><strong>Galaxy Cinema</strong></a>
+                                            cũng giới thiệu các
+                                            <a href="#"><i>phim sắp chiếu</i></a>
+                                            hot nhất trong mục
+                                            <a href="#"><i>Phim Hay Tháng</i> &nbsp;</a>
+                                            .
+                                        </span>
+                                    </span>
+                                </p>
+                                <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 10.0pt; margin-left: 0in; text-align: justify">
+                                    <span style="font-size: 14px;">
+                                        <span style="font-family: Arial,Helvetica,sans-serif;">
+                                            Hiện nay,
+                                            <a href="#"><strong>Galaxy Cinema</strong></a>
+                                            đang ngày càng phát triển hơn nữa với các chương trình đặc sắc, các khuyến mãi hấp dẫn,
+                                            đem đến cho khán giả những bộ phim bom tấn của thế giới và Việt Nam nhanh chóng và sớm nhất.m,
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link href="~/Content/vung02.css" rel="stylesheet" type="text/css" media="all" />
+
+</body>
+</html>

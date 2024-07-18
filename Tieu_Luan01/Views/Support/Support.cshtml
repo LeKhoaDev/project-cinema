@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "Support";
+}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+        <div class="block-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="tab-movies recruitment">
+                            <div class="tab-movies-line">
+                                <div class="tab-content">
+                                    <form id="tab_feedback" ng-controller="supportController" ng-submit="submit()" class="tab-pane active ng-pristine ng-scope ng-invalid ng-invalid-required ng-valid-email">
+                                        <div class="feedback">
+                                            <div class="feedback-header">
+                                                <h2>Bạn có gì muốn nhắn nhủ Galaxy Cinema?</h2>
+                                                <div class="feedback-contact">
+                                                    <div class="feedback-contact-item">
+                                                        <i class="fa fa-envelope"></i>
+                                                        <a href="#">supports@galaxy.com.vn</a>
+                                                    </div>
+                                                    <div class="feedback-contact-item">
+                                                        <i class="fa fa-phone"></i>
+                                                        <a href="mailto:19002224">19002224</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="feedback-form">
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <input id="name" placeholder="Họ và Tên" type="text" required="" ng-model="data.name" class="login ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" fdprocessedid="derpek">
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <input id="email" placeholder="Email" type="email" required="" ng-model="data.email" class="login ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required" fdprocessedid="6jr0jl">
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <input id="phone" placeholder="Số điện thoại" type="tel" ng-model="data.phone" class="login ng-pristine ng-untouched ng-valid ng-empty" fdprocessedid="zrtl4">
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <textarea rows="10" placeholder="Nội dung" required="" ng-model="data.message" class="support-form ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"></textarea>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="captcha-support">
+                                                    <galaxy-captcha data-config="captchaConfig" class="ng-isolate-scope">
+                                                        <div class="captcha-wrap">
+                                                            <div ng-bind-html="captchaImage" class="captcha ng-binding">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0,0,150,50">
+                                                                    <rect width="100%" height="100%" fill="#fff"></rect>
+                                                                    <path fill="#ebeb79" d="M14.33 32.98L14.33 32.98L14.39 33.04Q17.38 32.57 20.58 32.68L20.53 32.63L20.59 32.69Q20.56 30.15 20.56 27.75L20.61 27.80L20.57 27.76Q20.62 25.33 20.81 22.78L20.80 22.77L20.70 22.68Q19.59 24.49 14.37 33.02ZM24.11 40.21L24.12 40.21L24.31 40.40Q22.48 39.94 20.69 39.87L20.70 39.88L20.84 40.02Q20.62 37.63 20.50 35.15L20.53 35.18L20.43 35.08Q15.20 34.99 10.48 36.40L10.31 36.23L10.48 36.40Q10.41 35.72 10.60 34.73L10.76 34.89L10.77 34.90Q12.58 31.76 16.15 25.47L15.97 25.29L16.04 25.36Q19.01 20.56 22.43 16.68L22.41 16.65L22.29 16.53Q23.24 16.42 24.92 16.15L24.89 16.13L24.95 16.19Q23.11 22.68 23.11 29.73L22.97 29.59L23.00 29.62Q23.05 31.15 23.13 32.64L23.03 32.54L24.44 32.77L24.48 32.81Q24.94 32.69 25.54 32.81L25.59 32.86L25.63 32.89Q25.70 33.84 25.97 35.78L26.09 35.90L25.93 35.74Q24.73 35.50 23.24 35.31L23.28 35.34L23.29 35.35Q23.59 37.44 24.28 40.37ZM25.81 32.43L25.89 32.50L25.82 32.44Q25.75 32.49 25.56 32.49L25.55 32.47L25.18 32.48L25.22 32.52Q24.98 30.91 24.98 29.50L24.94 29.47L25.06 29.59Q25.11 23.23 27.16 17.22L27.05 17.11L27.07 17.13Q26.33 17.41 24.88 17.79L24.88 17.79L24.76 17.67Q25.08 17.00 25.54 15.59L25.53 15.58L25.45 15.50Q24.27 16.00 22.22 16.23L22.28 16.29L22.12 16.13Q18.26 20.53 13.04 29.90L13.14 30.00L15.23 26.34L15.17 26.28Q14.78 27.34 14.51 27.91L14.52 27.91L10.06 36.93L10.00 36.87Q10.58 36.65 11.72 36.27L11.79 36.34L11.61 36.53L11.71 36.64Q11.54 37.27 11.24 38.52L11.30 38.59L11.21 38.50Q15.34 37.19 20.18 37.38L20.18 37.38L20.10 37.30Q20.11 38.23 20.30 40.21L20.37 40.28L20.31 40.22Q21.42 40.25 22.48 40.37L22.49 40.38L22.48 40.36Q22.75 41.17 23.02 42.54L22.94 42.46L22.88 42.40Q24.91 42.75 27.91 43.67L27.87 43.63L27.83 43.59Q26.97 41.58 26.05 38.31L26.00 38.25L27.38 38.65L27.34 38.60Q28.09 38.89 28.77 39.24L28.82 39.28L28.72 39.18Q27.93 36.68 27.77 35.00L27.83 35.06L27.85 35.07Q27.24 34.88 26.10 34.65L26.15 34.71L26.15 34.71Q25.82 33.31 25.82 32.44ZM17.89 32.35L17.92 32.38L17.81 32.27Q18.74 31.14 20.30 28.59L20.21 28.50L20.31 28.60Q20.16 29.41 20.12 30.36L20.25 30.48L20.22 30.46Q20.24 31.46 20.28 32.41L20.23 32.36L20.22 32.36Q19.61 32.28 19.04 32.28L19.08 32.32L19.01 32.25Q18.55 32.40 17.94 32.40Z"></path>
+                                                                    <path d="M14 37 C76 18,67 44,140 38" stroke="#ecec8c" fill="none"></path>
+                                                                    <path fill="#e8d395" d="M82.30 23.43L82.17 23.30L82.23 23.36Q79.01 23.34 77.18 22.27L77.25 22.34L77.34 22.43Q79.75 20.96 84.62 16.74L84.66 16.77L84.70 16.81Q85.34 16.54 86.64 15.93L86.71 16.01L86.65 15.95Q85.34 21.91 85.23 28.27L85.14 28.17L85.10 28.14Q85.04 34.55 86.10 40.64L86.13 40.67L86.25 40.78Q84.44 39.93 82.31 39.81L82.34 39.85L82.27 39.77Q82.17 35.64 82.17 31.56L82.21 31.60L82.31 31.70Q82.20 27.48 82.24 23.37ZM81.82 25.58L81.91 40.25L81.84 40.18Q83.17 40.29 84.12 40.48L84.00 40.36L84.12 40.48Q84.22 41.19 84.41 42.56L84.29 42.44L84.28 42.43Q87.18 43.01 89.62 45.25L89.66 45.30L89.64 45.28Q87.08 38.07 87.04 30.61L87.03 30.60L87.07 30.64Q87.12 23.30 88.95 16.07L88.86 15.98L88.93 16.05Q88.34 16.41 86.74 17.52L86.71 17.49L86.65 17.43Q86.82 16.65 87.13 15.13L87.18 15.18L87.12 15.12Q85.94 16.04 84.50 16.42L84.42 16.34L84.50 16.42Q80.76 20.02 76.45 22.31L76.28 22.13L76.37 22.23Q77.79 23.34 80.15 23.68L80.13 23.66L80.10 23.63Q79.59 24.30 78.29 25.36L78.21 25.28L78.28 25.35Q79.67 25.63 81.87 25.63L81.82 25.58Z"></path>
+                                                                    <path fill="#9ee287" d="M39.36 29.18L39.42 29.23L39.36 29.18Q37.44 29.12 36.22 30.45L36.30 30.53L36.29 30.52Q35.14 31.92 34.99 33.82L34.83 33.67L34.88 33.72Q34.69 35.85 35.91 36.86L35.97 36.92L35.87 36.82Q37.26 38.00 39.39 37.93L39.24 37.77L39.33 37.86Q41.52 37.58 42.47 36.63L42.64 36.80L42.61 36.76Q43.61 35.29 43.50 33.46L43.45 33.42L43.42 33.39Q43.39 31.60 42.30 30.40L42.30 30.40L42.33 30.43Q41.28 29.27 39.46 29.27ZM39.44 19.85L39.29 19.70L39.26 19.67Q37.83 19.54 36.50 20.03L36.63 20.16L36.64 20.17Q35.30 20.93 35.53 22.79L35.48 22.74L35.47 22.73Q35.99 26.49 39.34 26.49L39.43 26.58L39.41 26.55Q40.91 26.69 41.90 25.55L41.95 25.60L41.99 25.64Q42.99 24.50 43.03 22.94L42.97 22.89L42.90 22.82Q42.95 21.04 42.23 20.43L42.31 20.51L42.26 20.47Q40.54 19.58 39.25 19.66ZM39.08 40.32L39.08 40.31L35.96 40.24L36.04 40.32Q34.45 40.25 33.12 39.38L33.22 39.48L33.14 39.40Q31.73 38.22 31.88 35.36L31.97 35.45L31.99 35.47Q32.39 28.56 36.01 27.57L36.02 27.58L36.12 27.69Q33.84 26.77 32.51 21.41L32.36 21.26L32.50 21.41Q32.08 19.91 32.15 19.11L32.16 19.12L32.04 19.00Q32.51 17.03 36.20 16.99L36.10 16.90L36.19 16.98Q40.43 16.92 41.88 17.11L41.91 17.14L41.78 17.01Q45.74 17.66 46.20 19.68L46.12 19.61L46.06 19.54Q46.16 20.14 46.16 20.52L46.21 20.57L46.13 20.49Q46.20 21.25 46.01 21.86L46.03 21.87L46.02 21.87Q45.34 26.02 42.41 27.54L42.49 27.62L42.44 27.57Q45.92 28.35 46.41 33.64L46.41 33.64L46.48 33.71Q46.59 33.97 46.63 35.26L46.45 35.08L46.46 35.09Q46.64 37.94 45.04 39.00L45.04 39.01L45.02 38.99Q43.73 39.94 39.16 40.39ZM41.27 42.54L41.25 42.53L44.61 42.61L44.63 42.63Q46.48 42.84 48.00 42.12L47.88 42.00L47.99 42.11Q49.05 41.30 49.12 39.43L49.19 39.50L49.24 39.55Q49.22 38.38 48.84 36.44L48.74 36.35L48.76 36.37Q47.87 31.75 45.78 29.88L45.75 29.85L45.64 29.56L45.37 29.21L45.28 29.00L45.25 28.97Q46.85 27.57 47.77 23.42L47.78 23.43L47.91 23.56Q47.85 23.12 47.92 22.28L47.81 22.16L47.86 22.22Q47.99 21.59 47.91 20.98L47.94 21.00L47.94 21.01Q47.72 19.49 46.54 18.99L46.65 19.11L46.63 19.05L46.32 18.82L46.41 18.91Q46.24 18.28 45.06 17.48L44.89 17.31L45.11 17.49L44.93 17.30Q43.04 16.71 38.97 16.52L38.99 16.54L38.89 16.45Q37.31 16.31 35.94 16.42L36.05 16.54L36.06 16.55Q35.20 16.52 33.90 16.67L33.92 16.69L33.86 16.64Q32.08 17.18 31.86 18.81L31.83 18.79L31.72 18.68Q31.63 19.12 31.67 19.92L31.81 20.06L31.67 19.92Q31.83 20.50 32.40 22.86L32.44 22.90L32.48 22.94Q33.15 26.05 34.90 27.38L35.02 27.50L35.16 27.64L35.14 27.62Q32.32 28.88 31.79 34.05L31.70 33.96L31.78 34.05Q31.54 36.20 31.54 37.11L31.58 37.15L31.51 37.08Q31.68 38.97 32.86 39.89L32.79 39.81L32.75 39.77Q32.90 39.89 33.17 40.08L33.22 40.13L33.24 40.15Q34.29 42.46 41.41 42.68ZM41.04 31.57L40.95 31.49L40.96 31.50Q42.02 31.56 42.89 32.02L42.81 31.93L42.74 31.87Q43.12 32.85 43.08 33.39L43.21 33.52L43.21 33.52Q43.23 33.80 43.23 34.11L43.10 33.98L43.13 34.01Q43.19 36.43 40.90 37.27L40.83 37.19L40.88 37.24Q40.00 37.46 39.20 37.35L39.28 37.43L39.30 37.45Q38.17 37.54 37.02 37.08L37.15 37.20L37.04 37.09Q36.79 36.47 36.87 35.48L36.82 35.42L36.94 35.54Q36.99 33.85 38.19 32.63L38.16 32.60L38.25 32.69Q39.32 31.35 40.92 31.46ZM41.25 22.08L41.17 22.00L41.21 22.04Q41.96 21.88 42.50 22.03L42.57 22.11L42.58 22.92L42.62 22.95Q42.55 24.29 41.63 25.30L41.64 25.31L41.60 25.26Q40.80 26.39 39.43 26.20L39.27 26.04L39.44 26.21Q38.34 26.09 37.92 25.87L37.88 25.83L37.91 25.86Q37.85 25.57 37.74 24.89L37.83 24.98L37.78 24.93Q37.58 23.59 38.80 22.75L38.85 22.80L38.75 22.70Q39.80 22.00 41.21 22.04Z"></path>
+                                                                    <path fill="#8769e1" d="M131.78 37.82L131.84 37.89L131.95 37.99Q132.07 38.80 132.61 40.82L132.80 41.01L132.73 40.95Q128.40 39.51 123.80 39.78L123.81 39.79L123.89 39.87Q119.40 40.21 115.40 42.19L115.29 42.08L115.34 42.13Q115.48 41.36 115.52 41.43L115.67 41.58L115.54 41.46Q119.20 37.43 123.13 33.01L123.29 33.18L123.32 33.21Q127.62 28.11 128.80 23.42L128.76 23.38L128.89 23.51Q129.27 21.69 128.00 20.51L128.10 20.60L127.90 20.41Q126.80 19.40 125.01 19.55L125.00 19.55L124.99 19.54Q124.64 19.49 124.30 19.49L124.15 19.34L124.24 19.43Q122.72 19.43 121.46 20.35L121.54 20.42L121.40 20.29Q120.12 21.67 120.35 24.33L120.41 24.40L120.34 24.33Q118.67 24.10 117.45 23.65L117.39 23.59L117.48 23.68Q117.22 22.20 117.15 20.75L117.16 20.76L117.12 20.73Q116.97 19.01 117.58 17.87L117.75 18.05L117.57 17.87Q119.53 16.67 122.88 16.67L122.80 16.58L124.58 16.61L124.53 16.56Q126.74 16.53 127.70 16.65L127.89 16.84L127.88 16.83Q132.14 17.17 132.41 19.61L132.45 19.65L132.42 19.62Q132.50 20.19 132.42 20.99L132.40 20.97L132.42 20.99Q132.30 21.55 132.15 22.24L132.24 22.33L132.28 22.38Q130.57 30.41 123.00 37.26L123.04 37.30L122.89 37.16Q124.32 37.03 125.70 37.03L125.75 37.08L125.69 37.02Q128.96 37.06 131.81 37.86ZM131.38 17.17L131.37 17.16L131.29 17.08Q129.70 16.44 127.99 16.36L128.00 16.38L124.54 16.16L124.64 16.25Q120.06 15.86 117.85 16.96L117.98 17.09L117.84 16.95Q116.73 18.28 116.73 20.33L116.87 20.48L116.84 20.45Q116.78 21.07 117.08 23.89L117.10 23.90L117.18 23.98Q117.72 24.22 118.90 24.52L118.96 24.58L118.93 25.58L118.88 25.53Q118.93 26.07 119.00 26.61L118.87 26.48L118.96 26.56Q120.23 26.69 122.71 26.92L122.66 26.88L122.69 26.91Q122.63 26.50 122.63 26.16L122.52 26.05L122.56 26.09Q122.70 24.41 123.92 23.06L123.75 22.88L123.75 22.88Q125.03 21.59 126.81 21.70L126.78 21.67L126.91 21.80Q127.56 21.73 128.32 21.88L128.37 21.92L128.28 21.83Q128.50 22.32 128.58 22.74L128.45 22.62L128.58 22.74Q128.63 23.17 128.55 23.52L128.46 23.42L128.53 23.50Q127.19 28.17 122.77 33.00L122.77 33.00L122.75 32.98Q120.78 35.39 115.33 41.44L115.20 41.31L115.22 41.33Q115.16 42.29 114.82 42.86L114.78 42.83L114.76 42.81Q116.32 41.89 117.84 41.36L117.78 41.30L117.80 41.32Q117.06 41.87 116.11 43.36L116.24 43.48L116.27 43.51Q116.09 43.79 115.97 44.13L115.96 44.12L115.88 44.04Q120.89 42.12 126.37 42.31L126.30 42.24L126.39 42.33Q131.89 42.31 136.46 44.67L136.58 44.79L135.50 42.57L135.52 42.59Q134.83 41.22 134.57 40.42L134.68 40.53L134.57 40.42Q133.92 40.07 132.70 39.65L132.73 39.69L132.73 39.69Q132.63 39.01 132.25 37.64L132.12 37.52L132.15 37.55Q129.99 37.02 127.70 36.83L127.75 36.87L127.76 36.88Q132.35 32.22 133.87 23.96L133.98 24.07L133.98 20.98L134.10 21.11Q133.90 19.20 132.69 18.51L132.86 18.69L132.79 18.65L132.65 18.52Q132.61 18.44 132.54 18.44L132.57 18.48L132.60 18.51Q132.39 17.68 131.28 17.07Z"></path>
+                                                                    <path fill="#6eaae7" d="M61.12 23.40L61.21 23.49L61.14 23.42Q57.97 23.44 56.14 22.38L56.04 22.28L56.14 22.37Q58.67 21.02 63.54 16.79L63.41 16.66L63.53 16.78Q64.21 16.55 65.51 15.94L65.49 15.92L65.47 15.90Q64.27 21.97 64.15 28.33L64.00 28.18L64.15 28.33Q63.96 34.61 65.02 40.70L65.01 40.68L64.93 40.60Q63.24 39.87 61.11 39.75L61.28 39.92L61.19 39.83Q61.08 35.69 61.08 31.62L61.07 31.61L61.01 31.55Q61.17 27.59 61.21 23.48ZM60.82 25.72L60.72 40.20L60.66 40.14Q61.90 40.17 62.85 40.36L62.83 40.33L62.93 40.44Q63.03 41.14 63.22 42.51L63.12 42.42L63.25 42.54Q66.13 43.10 68.57 45.35L68.57 45.35L68.51 45.29Q66.03 38.17 66.00 30.71L65.87 30.58L65.96 30.67Q65.97 23.30 67.80 16.07L67.80 16.07L67.67 15.93Q67.22 16.43 65.62 17.54L65.57 17.49L65.64 17.56Q65.72 16.69 66.02 15.16L66.02 15.16L66.16 15.31Q64.84 16.08 63.39 16.46L63.36 16.43L63.34 16.40Q59.45 19.86 55.15 22.14L55.29 22.28L55.15 22.14Q56.68 23.37 59.04 23.71L59.01 23.68L59.01 23.69Q58.40 24.25 57.11 25.32L57.04 25.25L57.08 25.30Q58.58 25.69 60.78 25.69L60.70 25.60Z"></path>
+                                                                    <path fill="#e980cf" d="M102.84 29.22L102.79 29.18L102.87 29.26Q100.86 29.11 99.64 30.44L99.79 30.59L99.74 30.54Q98.48 31.83 98.33 33.73L98.27 33.68L98.34 33.75Q98.17 35.90 99.39 36.91L99.32 36.84L99.39 36.91Q100.64 37.95 102.77 37.88L102.73 37.83L102.82 37.92Q105.09 37.72 106.04 36.77L105.90 36.63L106.07 36.80Q106.93 35.19 106.82 33.36L107.01 33.55L106.86 33.40Q106.81 31.60 105.73 30.40L105.80 30.47L105.64 30.32Q104.68 29.23 102.85 29.23ZM102.82 19.80L102.82 19.80L102.67 19.65Q101.38 19.66 100.05 20.16L100.00 20.11L99.96 20.06Q98.65 20.85 98.88 22.72L98.90 22.74L98.96 22.79Q99.38 26.45 102.73 26.45L102.79 26.51L102.89 26.61Q104.34 26.69 105.33 25.55L105.42 25.64L105.27 25.48Q106.34 24.43 106.38 22.87L106.37 22.86L106.28 22.77Q106.48 21.14 105.75 20.53L105.82 20.60L105.83 20.60Q104.09 19.70 102.80 19.78ZM102.51 40.32L102.54 40.35L99.55 40.40L99.51 40.36Q97.89 40.27 96.56 39.39L96.60 39.43L96.53 39.36Q95.29 38.35 95.44 35.49L95.33 35.38L95.30 35.35Q95.77 28.52 99.39 27.53L99.48 27.62L99.46 27.60Q97.25 26.76 95.92 21.39L95.82 21.29L95.90 21.37Q95.51 19.92 95.59 19.12L95.56 19.09L95.50 19.03Q95.95 17.05 99.65 17.01L99.57 16.93L99.53 16.90Q103.83 16.89 105.28 17.08L105.21 17.02L105.20 17.01Q109.02 17.51 109.47 19.53L109.47 19.53L109.45 19.51Q109.57 20.12 109.57 20.50L109.58 20.51L109.71 20.64Q109.56 21.17 109.37 21.78L109.54 21.95L109.56 21.98Q108.76 26.01 105.83 27.54L106.02 27.72L105.93 27.63Q109.41 28.41 109.91 33.70L109.99 33.79L109.88 33.68Q109.82 33.77 109.86 35.07L109.89 35.10L110.01 35.22Q110.00 37.87 108.40 38.93L108.38 38.92L108.52 39.05Q107.14 39.92 102.57 40.38ZM104.70 42.54L104.73 42.57L108.20 42.77L108.14 42.71Q109.77 42.71 111.30 41.98L111.43 42.11L111.38 42.07Q112.47 41.29 112.55 39.43L112.62 39.50L112.59 39.47Q112.71 38.44 112.32 36.50L112.31 36.48L112.15 36.33Q111.39 31.84 109.30 29.97L109.18 29.85L109.02 29.50L108.79 29.20L108.76 29.05L108.66 28.95Q110.41 27.70 111.32 23.55L111.18 23.41L111.19 23.41Q111.34 23.19 111.42 22.35L111.31 22.24L111.38 22.31Q111.47 21.64 111.39 21.03L111.33 20.96L111.28 20.91Q111.14 19.48 109.96 18.98L109.97 18.99L109.96 18.95L109.93 18.99L109.87 18.93Q109.52 18.13 108.34 17.33L108.32 17.31L108.39 17.34L108.42 17.37Q106.50 16.75 102.43 16.56L102.37 16.50L102.39 16.52Q100.91 16.48 99.54 16.60L99.51 16.57L99.38 16.44Q98.57 16.47 97.28 16.62L97.39 16.73L97.43 16.77Q95.33 17.00 95.10 18.64L95.18 18.71L95.24 18.77Q95.21 19.27 95.25 20.07L95.27 20.09L95.17 20.00Q95.22 20.46 95.79 22.82L95.82 22.85L95.92 22.95Q96.61 26.08 98.36 27.42L98.47 27.52L98.45 27.50L98.45 27.50Q95.73 28.85 95.19 34.03L95.10 33.94L95.16 34.00Q95.01 36.24 95.01 37.16L94.98 37.13L95.05 37.20Q95.04 38.90 96.22 39.81L96.16 39.75L96.23 39.82Q96.36 39.91 96.62 40.10L96.66 40.14L96.66 40.14Q97.58 42.31 104.69 42.54ZM104.50 31.61L104.35 31.46L104.37 31.47Q105.34 31.46 106.21 31.91L106.18 31.88L106.19 31.89Q106.57 32.88 106.53 33.41L106.50 33.38L106.56 33.44Q106.61 33.76 106.61 34.06L106.66 34.11L106.64 34.10Q106.60 36.41 104.32 37.25L104.29 37.22L104.25 37.18Q103.43 37.47 102.63 37.35L102.78 37.50L102.79 37.52Q101.62 37.56 100.48 37.11L100.41 37.03L100.56 37.18Q100.21 36.46 100.29 35.47L100.31 35.49L100.22 35.40Q100.35 33.77 101.55 32.56L101.64 32.65L101.73 32.74Q102.78 31.37 104.38 31.49ZM104.68 22.08L104.73 22.13L104.70 22.10Q105.38 21.87 105.91 22.02L106.10 22.21L105.99 22.90L106.03 22.94Q106.08 24.40 105.17 25.40L105.11 25.35L105.16 25.40Q104.20 26.36 102.83 26.17L102.82 26.17L102.76 26.10Q101.77 26.10 101.35 25.87L101.31 25.83L101.38 25.90Q101.34 25.63 101.23 24.95L101.16 24.88L101.19 24.91Q101.07 23.65 102.29 22.81L102.12 22.64L102.22 22.74Q103.23 22.00 104.64 22.04Z"></path>
+
+                                                                </svg>
+                                                            </div>
+                                                            <div class="captcha-refesh">
+                                                                <a ng-click="refeshCaptcha()">
+                                                                    <i class="icon-loading"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </galaxy-captcha>
+                                                    <input id="captcha" placeholder="Nhập mã captcha" type="text" required="" ng-model="data.captcha" class="login input-captcha ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" fdprocessedid="vmdnas">
+                                                    <button href="#" class="btn primary-arrow btn-sent-support pull-right" fdprocessedid="e77s3c">Gửi</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div id="getBuyTicket" class="hidden-xs">
+                            <div ng-controller="quickBuyTicket" class="tabs-buyticket ng-scope">
+                                <div class="label-tab-buyticket">mua vé nhanh</div>
+                                <div class="content-movie btn-box-select-ticket">
+                                    <form class="ng-pristine ng-valid">
+                                        <galaxy-select ng-model="byMovie" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn phim</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="cxdy79">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Con Nhót Mót Chồng
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Lật Mặt 6: Tấm Vé Định Mệnh
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Guardians Of The Galaxy Vol.3
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Fireheart
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Tid Noy
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Inhuman Kiss 2
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="6" class="ng-binding ng-scope" value="number:6">
+                                                        Cats In The Museum
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="7" class="ng-binding ng-scope" value="number:7">
+                                                        The Super Mario Bros. Movie
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="cinemaConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn rạp</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="fuwao">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Galaxy Nguyễn Du
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Galaxy Tân Bình
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Galaxy Kinh Dương Vương
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Galaxy Quang Trung
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="4" class="ng-binding ng-scope" value="number:4">
+                                                        Galaxy Bến Tre
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="5" class="ng-binding ng-scope" value="number:5">
+                                                        Galaxy Mipec Long Biên
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="6" class="ng-binding ng-scope" value="number:6">
+                                                        Galaxy Đà Nẵng
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="7" class="ng-binding ng-scope" value="number:7">
+                                                        Galaxy Cà Mau
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="8" class="ng-binding ng-scope" value="number:8">
+                                                        Galaxy Trung Chánh
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="dateConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn ngày</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="8n6qhn">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        Thứ bảy, 06/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        Chủ nhật, 07/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        Thứ hai, 08/05/2023
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        Thứ ba, 09/05/2023
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <galaxy-select ng-model="sessionConfig" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            <a class="btn btn-select btn-select-light">
+                                                <span class="btn-select-value ng-binding">Chọn suất</span>
+                                                <span class="btn-select-arrow fa fa-angle-down"></span>
+                                                <select ng-change="onChange()" ng-model="curentIndex" class="ng-pristine ng-untouched ng-valid ng-not-empty" fdprocessedid="3bkmu7">
+                                                    <option value="? number:-1 ?" selected="selected"></option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="0" class="ng-binding ng-scope" value="number:0">
+                                                        12:30, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="1" class="ng-binding ng-scope" value="number:1">
+                                                        16:15, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="2" class="ng-binding ng-scope" value="number:2">
+                                                        20:00, 2D - Phụ đề
+                                                    </option>
+                                                    <option ng-repeat="item in items" ng-selected="item[model.keyValue] == model.currentValue" ng-value="3" class="ng-binding ng-scope" value="number:3">
+                                                        22:15, 2D - Phụ đề
+                                                    </option>
+                                                </select>
+                                            </a>
+                                        </galaxy-select>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 pull-right">
+                                                <a href="#" class="btn secondary fl-right">MUA VÉ</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+

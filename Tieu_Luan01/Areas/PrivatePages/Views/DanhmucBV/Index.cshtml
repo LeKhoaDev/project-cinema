@@ -1,0 +1,98 @@
+﻿@using Tieu_Luan01.Models;
+@{
+    ViewBag.Title = "Index";
+    List<BaiViet> ds = (List<BaiViet>)ViewData["DanhSachBV"];
+}
+<style>
+    form {
+        display: inline;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>DataTables</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">DataTables</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tên bài viết</th>
+                                    <th>Ngày Đăng</th>
+                                    <th>Tài khoản</th>
+                                    <th>Số lần đọc </th>
+                                    <th>Lệnh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BaiViet i in ds)
+                                {
+                                    <tr>
+                                        <td>
+                                            @i.tenBV
+                                        </td>
+                                        <td>@string.Format("{0: hh:mm [dd/MM/yyyy]}", i.ngayDang)</td>
+                                        <td> @i.TaiKhoan1.hoDem @i.TaiKhoan1.tenTV</td>
+                                        <td>@i.soLanDoc</td>
+                                        <td>
+                                            @using (Html.BeginForm("Active", "DanhmucBV", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                <button href="#" class="btn btn-sm bg-teal">
+                                                    <i>@ViewBag.tdCuaNut</i>
+                                                </button>
+                                            }
+
+                                            <button href="#" class="btn btn-sm btn-primary">
+                                                <i>Chỉnh sửa</i>
+                                            </button>
+                                            @using (Html.BeginForm("Delete", "DanhmucBV", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                <button href="#" class="btn btn-danger btn-sm">
+                                                    <i> Xóa</i>
+                                                </button>
+                                            }
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->

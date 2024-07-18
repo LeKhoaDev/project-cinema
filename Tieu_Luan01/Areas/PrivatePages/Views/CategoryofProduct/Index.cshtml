@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row mb-2">
+        <!--left column-->
+        <div class="col-sm-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin chính</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên bài viết </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên bài viết tối đa 35 ký tự">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nội dung tóm tắt </label>
+                            <textarea rows="5" class="form-control" placeholder="Nội dung tóm tắt không quá 100 chữ"></textarea>
+
+                        </div>
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">Ngày đăng</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter">
+                        </div>
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">Tài khoản</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter">
+                        </div>
+                        <div class="form-group left">
+                            <label for="exampleInputEmail1">Số lần đọc</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="123">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Kiểm duyệt bài viết</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!--right column-->
+        <div class="col-sm-6">
+            <!-- general form elements disabled -->
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Hình đại diện</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <img src="/Areas/Assets/dist/img/19.jpg" alt="user-avatar" class="img-circle img-fluid">
+
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+
